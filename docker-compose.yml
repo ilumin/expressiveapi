@@ -1,0 +1,18 @@
+version: "2"
+
+services:
+
+  php:
+    container_name: expressiveapi_php
+    image: bitnami/php-fpm
+    volumes:
+      - .:/app
+
+  server:
+    container_name: expressiveapi_server
+    image: bitnami/nginx
+    ports:
+      - 80:80
+    volumes:
+      - .:/app
+      - ./site.conf:/bitnami/nginx/conf/vhosts/site.conf
